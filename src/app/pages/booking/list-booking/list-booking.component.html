@@ -1,0 +1,50 @@
+<div class="page-heading">
+  <h1 class="page-title">Booking</h1>
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+          <a routerLink="/dashboard"><i class="la la-home font-20"></i></a>
+      </li>
+  </ol>
+</div>
+<div class="page-content fade-in-up"> 
+  <div class="ibox">
+      <div class="ibox-head">
+          <div class="ibox-title">
+                <button class="btn btn-sm btn-flat btn-success" (click)="addBooking()">Add New</button>
+          </div>
+      </div>
+      <div class="ibox-body">
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Address</th>
+                          <th>From</th>
+                          <th>To</th>
+                          <th>Status</th>
+                          <th>Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let booking of BookingList">
+                          <td>{{ booking.firstName }}</td>
+                          <td>{{ booking.lastName }}</td>
+                          <td>{{ booking.address }}</td>
+                          <td>{{ booking.from }}</td>
+                          <td>{{ booking.to }}</td>
+                          <td>
+                              <span class="badge badge-success">{{ booking.UserStatus }}</span>
+                            </td>
+                          <td>
+                              <button class="btn btn-info btn-xs m-r-5" (click)="editBooking(booking.id)" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil font-14"></i></button>
+                              <button class="btn btn-danger btn-xs" (click)="deleteBooking(booking.id, booking.firstName)" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash font-14"></i></button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left"> {{ title }} </h4>
+    <button type="button" class="close pull-right" (click)="onClose()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>First Name</label>
+                        <input formControlName="firstName" id="firstName" name="firstName" placeholder="First Name" class="form-control" type="text">
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Last Name</label>
+                        <input formControlName="lastName" id="lastName" name="lastName" class="form-control" type="text" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>Email</label>
+                        <input formControlName="emailId" name="emailId" id="emailId" class="form-control" type="email" placeholder="Email Address">
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Phone</label>
+                        <input formControlName="phoneNo" id="phoneNo" name="phoneNo" placeholder="Phone Number" class="form-control" type="tel">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>From</label>
+                        <input formControlName="from" id="from" name="from" placeholder="City Name" class="form-control" type="text">
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>To</label>
+                        <input formControlName="to" id="to" name="to" placeholder="City Name" class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label>Address</label>
+                        <textarea formControlName="address" name="address" id="address" class="form-control" placeholder="Address"></textarea>
+                    </div>
+                </div>
+    
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-default" data-dismiss="modal" (click)="onClose()">Close</button>
+            <button type="submit" class="btn btn-success">Update</button>
+        </div>
+    </form>
