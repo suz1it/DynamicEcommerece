@@ -17,15 +17,15 @@ export class LoginComponent implements OnInit {
     error = '';
 
     constructor(
-        private formBuilder: FormBuilder,
+        private fb: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService
     ) { }
 
     ngOnInit() {
-        this.loginForm = this.formBuilder.group({
-            email: ['', Validators.required],
+        this.loginForm = this.fb.group({
+            username: ['', Validators.required],
             password: ['', Validators.required]
         });
 
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
             return;
         }
 
-        this.authenticationService.login(this.f.email.value, this.f.password.value)
+        this.authenticationService.login(this.f.username.value, this.f.password.value)
             .pipe(first())
             .subscribe(
                 data => {

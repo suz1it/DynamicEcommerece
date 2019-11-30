@@ -7,10 +7,10 @@
         <div class="form-group">
             <div class="input-group-icon right">
                 <div class="input-icon"><i class="fa fa-envelope"></i></div>
-                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
             </div>
-            <div *ngIf="submitted && f.email.errors" class="help-block">
-                <small id="email" *ngIf="f.email.errors.required" class="form-text text-danger">Email is required.</small>
+            <div *ngIf="submitted && f.username.errors" class="help-block">
+                <small id="email" *ngIf="f.username.errors.required" class="form-text text-danger">Email is required.</small>
             </div>
 
         </div>

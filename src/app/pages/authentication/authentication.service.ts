@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from './model/user-model';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -18,10 +19,24 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
-    login(email: string, password: string) {
-        return this.http.post<any>('http://localhost:3000' + `/api/account/Login`, { email, password })
+    login(username: string, password: string) {
+
+        const headers = {
+            'Content-type': 'application/x-www-form-urlencoded'
+          }
+        
+        const body = new HttpParams()
+        .set('username', username)
+        .set('password', password)
+        .set('grant_type', 'password')
+        .set('client_id', 'MobileApp_IOS')
+        .set('client_secret', 'secret')
+
+        
+        return this.http.post<any>('http://demo.nepalla.com' + `/token`, body, {headers} )
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
+                console.log(user);
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
@@ -38,6 +53,6 @@ export class AuthenticationService {
     }
 
     registerUser(register: User) {
-      return this.http.post('http://localhost:3000' + `/api/account/Register`, register);
+      return this.http.post('http://demo.nepalla.com' + `/Register`, register);
     }
 }
